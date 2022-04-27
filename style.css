@@ -1,0 +1,357 @@
+/* simpre es importante definir una paleta de colores al inicio de nuestro codigo css, esta se define con 2 puntos que indican que no seran tomadas por el navegador y con root que es una clase no tomada del documento html, luego se ponen 2 guiones para luego colocar digamoslo asi una variable de css donde almacenaremos el color, a continuacion añadire una paleta de colores de la pagina, tambien podemos almacenar datos como fuentes */
+
+:root {
+   /*paleta de colores */
+    --blanco: #ffffff;
+    --negro: #212121;
+    --principal: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --gris_claro: #dfe9f3;
+
+    /*Fuentes */
+
+    --fuente-principal: 3.8rem;
+
+}
+ 
+
+ 
+ 
+ 
+ 
+/* lo que hacen las 2 primeras etiquetas (html y body, es que los rem nos midan exactamente 10px) */
+/* Recordar tambien que los rem son mejores que los px ya que se adaptan casi a cualquier pantalla, muy importante tener esto en cada pagina que hagamos*/
+
+
+/*GlOBALES*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory; /*Esto es para hacer scroll*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.sombra { /*Esto lo colocamos en la pagina https://www.cssmatic.com/*/
+   
+    box-shadow: 0px 5px 5px 2px rgba(148,148,148,0.61);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+body {
+    font-size: 16px;
+    /* para encontrar fuentes es en google fonts, una vez esten en nuestro documento html se llaman con comillas*/
+    font-family: "Krub", sans-serif;
+    background-image: linear-gradient(to top, var(--gris_claro) 0%, var(--blanco)); /*Esto nos ayuda a crear un degradado, primero se indica si ira de abajo hacia arriba, en este caso va de abajo hacia arriba por lo cual se pone to que es muy importante y top para indicar que empieza desde abajo, luego el color primario, es decir con el que se empieza y luego el final que es un blanco, y con el cero porciento indicamos que tan rapido llega al color ultimo, que aqui es el gris claro*/
+}
+
+
+/*TITULOS Y SUBTITULOS*/
+h1 {
+    font-size: 3.8rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+.titulo {
+    text-align: center;
+    font-size: var(--fuente-principal);
+    /*cuando tenemos colores ya en la etiqueta root declarados los podemos reutilizar poniendo la etiqueta color y dentro de un var el nombre de la variable donde guardamos el color */
+    color: var(--negro);
+
+   
+    /* font-weight nos ayuda a el grosor de texto y muy importante para controlarlo(Por default esta en grosor 700 en el navegador, para bajarlo o subirlo tenemos que a verla descargado en google fonts, en este caso la puse en 400 por que en google fonts la puse en 700 y 400) */
+    font-weight: 400;
+
+
+   
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+/*CONTENEDORES*/
+.contenedor {
+    /* el max-width nos ayuda a que en pagina responsive si vamos bajando de resolucion y la navegacion no nos quede inmovil sino que se vaya acomodando hasta llegar a los ciertos pixeles del media query */
+    max-width: 120rem;
+    /* margin top: margen hacia arriba */
+    
+    /* para centrar contenido utilizamos margin auto en el martin-right y margin-left despendiendo tambien lo que le hayamos cortado con el width */
+    
+    /* para acortar codigo utlizamos el margin para que no se nos olvide el margin nos podemos acordar de las manecillas de relog ya que lo primero es el margen hacia arriga que seria el primer valor luego el valor de las 3 que seria el margen a la derecha luego el margen hacia abajo y luego el margen a la izquierda pero siempre la posicion inicial es el margen de arriba y luego los de la derecha */
+    margin: 0 auto 0 auto;
+
+    /* aqui otro ejemplo aunque no pusimos todos los valores el primer valor css lo toma como valor de arriba y abajo y el segundo de derecha e izquierda
+    margin: 0 auto;
+    */
+
+}
+
+.boton {
+    
+    background-color: var(--secundario);  
+    color: var(--blanco);
+    padding-left: 1rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    width: auto;
+    border: none;
+    
+    
+    text-transform: uppercase; /*Colocar texto en mayuscula*/
+    font-weight: bold;
+    border-radius: .5rem ; /*borde redondeado*/
+    
+}
+
+@media (min-width: 480px) {
+    .boton {
+        width: auto; /*para que el tamaño resetee*/
+        
+    }
+}
+
+.boton:hover {
+    cursor: pointer; /*nos regresa la mano en los botones con el puntero*/
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    
+    /* display: flex nos avilita otras propiedades del flexbox */
+    display: flex;
+    flex-direction: column;
+    /* justify-content nos ayuda a justificar el contenido como deseemos, en este caso el space-around distribuye el contenido al centro de su padding */
+    align-items: center;
+
+}
+
+/*utilidades*/
+.w-sn-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    w-sn-100{
+        width: auto;
+    }
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+.flex {
+    display: flex;
+}
+
+
+
+/* Este es media querie para un tablet*/
+@media (min-width: 768px ) {
+    .navegacion-principal {
+        /* reinicia el flex al normal es decir en columna */
+        flex-direction: row;
+        /* align-items se utiliza para centrar verticalmente como en este caso a diferencia del justify-content que es para mover elementos horizontalmente */
+        
+        justify-content: space-between;
+    }
+}
+
+.navegacion-principal a {
+    color: var(--blanco);
+    /* quita el subrayado */
+    text-decoration: none;
+    font-size: 2rem;
+    /* grosor de la letra */
+    font-weight: normal;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--principal);
+    color: var(--negro);
+}
+
+.hero {
+    /* nos ayuda a insertar imagenes y para ellos utilizamos la propiedad url para indicar donde esta la imagen*/
+    background-image: url(../img/hero4.jpeg); 
+    /*  Para que la imagen tome todo el ancho posible */
+    background-size:cover;
+    /*Para que la imagen no se repita*/
+    background-repeat: no-repeat;
+    /*Tamaño absoluto o general de la imagen*/
+    height: 400px;
+    margin-bottom: 2rem;
+    /* Indispensable para mover elementos como texto de una imagen */
+    position: relative;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7); /* manera uno, que es confiable*/
+    /* background-color: rgb(0, 0, 0 / 2%);  manera mas nueva y simple pero sin tanto soporte*/
+    width: 100%;
+    height: 100%;
+   
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+    
+
+}
+
+.contenido-hero h2, /* podemos poner codigo para 2 lineas siempre y cuando esten en la misma clase*/
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+
+
+.servicio, 
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center; /*Nos ayuda a escrolear en el centro*/
+    scroll-snap-stop: always; /*nos ayuda a pausar siempre en el momento el cual se declare*/
+}
+
+
+
+
+/*Servicios*/
+
+@media (min-width: 768px) {
+    
+
+
+.servicios {
+    display: grid;   /*display grid nos permite agrupar los elementos en cuadros */
+    /* grid-template-columns: 33.3% 33.3% 33.3%;  define el tamaño de las columna es decir el ancho y cuantas son*/
+    /* grid-template-rows: 200px 800px;  define el tamaño de arriba y abajo es decir alturas*/
+
+    /*grid: 200px 800px / 1fr 1fr 1fr*/ /*los fr nos divide por fracciones iguales un contenido, le decimos que nos divida eso en 3 partes iguales*/;  /*es lo mismo que arriba primero definimos el row del aparte de arriba luego la parte de abajo, luego con guion definimos el ancho de las columnas*/
+    column-gap: 1rem; /*nos crea un margen de separacion*/
+    grid-template-columns: repeat(3, 1fr); 
+}    
+
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2; /*nos permite mover el interlineado, es decir distancia de cada linea*/
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--principal);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*Contacto*/
+
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% ); /*utilizar el valor mas pequeño, nos quita media queries ya que compara el tamaño y se adapta*/
+    margin: 0 auto; /*nos ayuda a centrar siempre y cuando no haya un display flex y eso nos hace poner esta funcion por que no hay manera de poner un justify content*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    color: var(--principal);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+
+
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    
+    } 
+    .campo:nth-child(3),
+    .campo:nth-child(4) /*como hay varios con la clase campos podemos colocar una especificamente de esta manera, con el numero ubicamos cual de todos los que tienen la clase es el numero 4*/ { 
+         grid-column: 1 / 3;/* aqui decimos que la columna debe de ir a de la 1 a la 3*/
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: 700;
+    margin-bottom: .5rem;
+    display: block; /*poner todo en bloque*/
+
+}   
+
+.campo .text {
+    width: 100%; /*que tomen todo el espacio*/
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.campo textarea {
+    height: 15rem;
+    width: 100%;
+
+}
+
+/*footer*/
+
+.footer {
+    text-align: center;
+}
